@@ -19,7 +19,8 @@ public class AndroidMeActivity extends AppCompatActivity {
             //This is fragment for the head of android.
             BodyPartFragment headFragment = new BodyPartFragment();
             headFragment.setImageIds(AndroidImageAssets.getHeads());
-            headFragment.setListIndex(0);
+            int headIndex = getIntent().getIntExtra("headInndex", 0);
+            headFragment.setListIndex(headIndex);
             fragment.beginTransaction()
                     .add(R.id.head_container, headFragment)
                     .commit();
@@ -27,7 +28,8 @@ public class AndroidMeActivity extends AppCompatActivity {
             //This is fragment for the body of android.
             BodyPartFragment bodyFragment = new BodyPartFragment();
             bodyFragment.setImageIds(AndroidImageAssets.getBodies());
-            bodyFragment.setListIndex(0);
+            int bodyIndex = getIntent().getIntExtra("bodyIndex", 0);
+            bodyFragment.setListIndex(bodyIndex);
             fragment.beginTransaction()
                     .add(R.id.body_container, bodyFragment)
                     .commit();
@@ -35,7 +37,8 @@ public class AndroidMeActivity extends AppCompatActivity {
             //This is fragment for the leg of the android.
             BodyPartFragment legFragment = new BodyPartFragment();
             legFragment.setImageIds(AndroidImageAssets.getLegs());
-            legFragment.setListIndex(0);
+            int legIndex = getIntent().getIntExtra("legIndex", 0);
+            legFragment.setListIndex(legIndex);
             fragment.beginTransaction()
                     .add(R.id.leg_container, legFragment)
                     .commit();
