@@ -10,22 +10,23 @@ import java.util.List;
 
 public class MasterListAdapter extends BaseAdapter {
 
+    //Keeps track of the context and the list of images to display
     private Context mContext;
-    private List<Integer> mImageIds;
+    private List<Integer> mImageIDs;
 
     /**
      * Constructor method
-     *
-     * @param imageIDs the list of images to display
+     * @param mContext The context
+     * @param mImageIDs The list of images to display
      */
-    public MasterListAdapter(Context context, List<Integer> imageIDs) {
-        mContext = context;
-        mImageIds = imageIDs;
+    public MasterListAdapter(Context mContext, List<Integer> mImageIDs) {
+        this.mContext = mContext;
+        this.mImageIDs = mImageIDs;
     }
 
     @Override
     public int getCount() {
-        return mImageIds.size();
+        return mImageIDs.size();
     }
 
     @Override
@@ -39,21 +40,18 @@ public class MasterListAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         ImageView imageView;
-        if (convertView != null) {
-            imageView = new ImageView(mContext);
 
+        if(convertView == null) {
+            imageView = new ImageView(mContext);
             imageView.setAdjustViewBounds(true);
             imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
             imageView.setPadding(8, 8, 8, 8);
         } else {
             imageView = (ImageView) convertView;
         }
-
-        imageView.setImageResource(mImageIds.get(position));
+        imageView.setImageResource(mImageIDs.get(position));
         return imageView;
     }
-
-
 }
